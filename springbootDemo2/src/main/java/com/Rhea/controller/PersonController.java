@@ -1,33 +1,40 @@
 package com.Rhea.controller;
 
+import com.Rhea.config.CatConfig;
+import com.Rhea.config.PersonConfig;
+import com.Rhea.domain.Cat;
+import com.Rhea.domain.Person;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class PersonController {
-//    @Value("${name}")
+    @Autowired
+    private PersonConfig personConfig;
+    @Autowired
+    private CatConfig catConfig;
+//    @Value("${person.name}")
 //    private String name;
-//    @Value("${age}")
-//    private String age;
-//
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    public String getAge() {
-//        return age;
-//    }
-//
-//    public void setAge(String age) {
-//        this.age = age;
-//    }
+//    @Value("${person.age}")
+//    private Integer age;
     @RequestMapping("/person")
-    public String Person(){
-        return "hello Rhea";
+    public Person Person(){
+        Person person = new Person();
+//        person.setName(name);
+//        person.setAge(age);
+        person.setAge(personConfig.getAge());
+        person.setName(personConfig.getName());
+        return person;
     }
+    @RequestMapping("/cat")
+    public Cat Cat(){
+        Cat cat = new Cat();
+        cat.setName(catConfig.getName());
+        cat.setAge(catConfig.getAge());
+        cat.setGender(catConfig.getGender());
+        return cat;
+    }
+
 }
