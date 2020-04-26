@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加成员</title>
+</head>
+<body>
+<h2 style="margin-left: 80px">中餐厅人员列表添加</h2>
+<form th:action="@{/guest/toAdd}" method="post" style="margin: 80px 20px;font-size: 24px">
+    <div style="height: 40px;margin-top: 10px">
+        <span>姓名：</span>
+        <input type="text" name="name" value="" style="height:20px">
+    </div>
+    <div style="height: 40px;margin-top: 10px">
+        <span>职位：</span>
+        <input type="text" value="" name="role" style="height:20px;">
+    </div>
+    <input type="submit" value="提交" style="height: 30px;margin-left: 200px;margin-top: 10px">
+</form>
+</body>
+</html>
